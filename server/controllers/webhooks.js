@@ -1,5 +1,4 @@
 import { Webhook } from "svix";
-import { buffer } from "micro";
 import mongoose from "mongoose";
 import User from "../models/User.js";
 
@@ -7,7 +6,7 @@ import User from "../models/User.js";
 
 export const clerkWebhooks = async (req, res) => {
   try {
-    const rawBody = (await buffer(req)).toString();
+    const payload = req.body.toString(); // raw body as string
     const whook = new Webhook(process.env.CLERK_WEBHOOK_SECRET);
     // Verify the headers
     // await whook.verify(JSON.stringify(req.body), {
@@ -17,7 +16,7 @@ export const clerkWebhooks = async (req, res) => {
     // });
     // const { data, type } = req.body;
 
-    const evt = whook.verify(rawBody, {
+    const evt = whook.verify(payload, {
       "svix-id": req.headers["svix-id"],
       "svix-timestamp": req.headers["svix-timestamp"],
       "svix-signature": req.headers["svix-signature"],
