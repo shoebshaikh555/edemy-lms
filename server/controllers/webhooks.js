@@ -13,10 +13,8 @@ export const clerkWebhooks = async (req, res) => {
       "svix-signature": req.headers["svix-signature"],
     });
     const { data, type } = req.body;
-    console.log("=========>", req.body);
     switch (type) {
       case "user.created": {
-        console.log("in case");
         const userData = {
           _id: data.id,
           email: data.email_addresses[0].email_address,
