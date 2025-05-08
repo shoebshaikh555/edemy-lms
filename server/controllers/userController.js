@@ -17,7 +17,7 @@ export const getUserData = async (req, res) => {
   }
 };
 
-// User Enrolled Courses with lecture links
+// User Enrolled Courses with Lecture Links
 export const userEnrolledCourses = async (req, res) => {
   try {
     const userId = req.auth.userId;
