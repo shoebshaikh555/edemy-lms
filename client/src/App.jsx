@@ -1,23 +1,21 @@
-import { Route, Routes, useMatch } from "react-router-dom"
-import Home from "./pages/student/Home"
-import CourseDetails from "./pages/student/CourseDetails"
-import CoursesList from "./pages/student/CoursesList"
-import MyEnrollments from "./pages/student/MyEnrollments"
-import Player from "./pages/student/Player"
-import Loading from "./components/student/Loading"
-import Educator from "./pages/educator/Educator"
-import Dashboard from "./pages/educator/Dashboard"
-import AddCourse from "./pages/educator/AddCourse"
-import MyCourses from "./pages/educator/MyCourses"
-import Navbar from "./components/student/Navbar"
-import StudentEnrolled from "./pages/educator/StudentEnrolled"
-import "quill/dist/quill.snow.css"
-import { ToastContainer } from "react-toastify"
+import { Route, Routes, useMatch } from "react-router-dom";
+import Home from "./pages/student/Home";
+import CourseDetails from "./pages/student/CourseDetails";
+import CoursesList from "./pages/student/CoursesList";
+import MyEnrollments from "./pages/student/MyEnrollments";
+import Player from "./pages/student/Player";
+import Loading from "./components/student/Loading";
+import Educator from "./pages/educator/Educator";
+import Dashboard from "./pages/educator/Dashboard";
+import AddCourse from "./pages/educator/AddCourse";
+import MyCourses from "./pages/educator/MyCourses";
+import Navbar from "./components/student/Navbar";
+import StudentEnrolled from "./pages/educator/StudentEnrolled";
+import "quill/dist/quill.snow.css";
+import { ToastContainer } from "react-toastify";
 
-const App = () => {
-
-  const isEducator = useMatch("/educator/*")
-
+function App() {
+  const isEducator = useMatch("/educator/*");
   return (
     <div className="text-default min-h-screen bg-white">
       <ToastContainer />
@@ -38,7 +36,7 @@ const App = () => {
         </Route>
       </Routes>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
