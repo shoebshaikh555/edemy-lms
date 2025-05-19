@@ -22,8 +22,10 @@ export const getUserData = async (req, res) => {
 export const userEnrolledCourses = async (req, res) => {
   try {
     const userId = req.auth.userId;
+    console.log("🚀 ~ userEnrolledCourses ~ userId:", userId);
     const userData = await User.findById(userId).populate("enrolledCourses");
-    res.json({ success: true, enrolledCourses: userData.enrolledCourses });
+    console.log("🚀", userData?.enrolledCourses);
+    res.json({ success: true, enrolledCourses: userData?.enrolledCourses });
   } catch (error) {
     res.json({ success: false, message: error.message });
   }
@@ -71,8 +73,8 @@ export const purchaseCourse = async (req, res) => {
     ];
 
     const session = await stripeInstance.checkout.sessions.create({
-      // success_url: `${origin}/loading/my-enrollments`,
-      success_url: `${origin}loading/my-enrollments`,
+      success_url: `${origin}/loading/my-enrollments`,
+      // success_url: `${origin}loading/my-enrollments`,
       cancel_url: `${origin}/`,
       line_items,
       mode: "payment",
